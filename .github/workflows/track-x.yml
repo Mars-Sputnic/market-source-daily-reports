@@ -1,0 +1,41 @@
+name: Track X sources
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: x-source-tracker
+  cancel-in-progress: false
+
+jobs:
+  track-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch public X posts and build daily report
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+        run: node scripts/track-x.mjs
+      - name: Commit daily report
+        run: |
+          git config user.name "market-source-tracker[bot]"
+          git config user.email "market-source-tracker[bot]@users.noreply.github.com"
+          git add README.md index.html reports
+          git diff --cached --quiet || git commit -m "Publish X source report for $(date -u +%F)"
+          git push
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4
