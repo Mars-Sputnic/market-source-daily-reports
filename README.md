@@ -14,10 +14,9 @@
 | 2026-08-03 | [查看](reports/2026-08-03.md) |
 | 2026-08-01 | [查看](reports/2026-08-01.md) |
 
-## 追踪范围
+## X API 追踪范围
 
-- X：Jukan、Leopold Stock Tracker、Negligible Capital、Herman Jin、Citrini、带带带比特、SemiAnalysis
-- 媒体与一手披露：CNBC / David Faber、The Information、News1 Korea、SK Hynix IR / DART、Bloomberg
-- 视频：EmergenceHK（待补充可稳定访问的主页链接）
+- Jukan、Leopold Stock Tracker、Negligible Capital、Herman Jin、Citrini、带带带比特、SemiAnalysis
+- 自动抓取仅获取公开原创帖；转帖与回复默认不纳入日报。
 
-内容按证据等级标记，不构成投资建议。受登录、robots 或付费墙限制时，`未确认` 不等于 `无新增`。
+内容按证据等级标记，不构成投资建议。
