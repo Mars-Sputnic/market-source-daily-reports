@@ -23,7 +23,7 @@
 | Jukan (@jukan05) | [打开](https://x.com/jukan05) | 2026-08-02 | 韩国 / 日本半导体供应链 |
 | Leopold Stock Tracker (@LeopoldTracker_) | [打开](https://x.com/LeopoldTracker_) | 2026-08-02 | Situational Awareness / 美股 |
 | Negligible Capital (@negligible_cap) | [打开](https://x.com/negligible_cap) | 2026-08-02 | 市场与科技股 |
-| Herman Jin (@ShanghaiJin) | [打开](https://x.com/ShanghaiJin) | 2026-08-02 | 科技与公开市场评论 |
+| Herman Jin (@ShanghaoJin) | [打开](https://x.com/ShanghaoJin) | 2026-08-02 | 科技与公开市场评论（2026-08-04 修正原先错误账号） |
 | Citrini (@citrini) | [打开](https://x.com/citrini) | 2026-08-02 | 宏观与主题市场研究 |
 | 带带带比特 (@daidaibtc) | [打开](https://x.com/daidaibtc) | 2026-08-02 | 中国市场评论 |
 | SemiAnalysis (@SemiAnalysis_) | [打开](https://x.com/SemiAnalysis_) | 2026-08-02 | 半导体与 AI 基础设施 |
