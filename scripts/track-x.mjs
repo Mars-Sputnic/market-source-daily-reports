@@ -58,11 +58,15 @@ if (!token) {
 
 const reportRows = posts.length
   ? posts.map((post) => `| ${chinaTime(post.created_at)}（上海时间） | ${post.author.name} @${post.author.username} | 一手 | 自动抓取到该账户原帖。摘录：${textExcerpt(post.text).replace(/\|/g, '\\|')} | [查看原帖](https://x.com/${post.author.username}/status/${post.id}) |`).join('\n')
-  : '| — | X 追踪账户 | 无新增 | 在本次成功获取的数据中，未发现覆盖日期内的新原创帖。 | — |';
+  : limitation
+    ? '| — | X 追踪账户 | 未确认 | API 调用未完成，无法判断是否有新增。 | — |'
+    : '| — | X 追踪账户 | 无新增 | 在本次成功获取的数据中，未发现覆盖日期内的新原创帖。 | — |';
 
 const htmlRows = posts.length
   ? posts.map((post) => `<tr><td>${escape(chinaTime(post.created_at))}（上海时间）</td><td>${escape(post.author.name)} @${escape(post.author.username)}</td><td>一手</td><td>自动抓取到该账户原帖。<details><summary>查看原文摘录</summary><p>${escape(textExcerpt(post.text))}</p></details></td><td><a href="https://x.com/${encodeURIComponent(post.author.username)}/status/${post.id}">查看原帖</a></td></tr>`).join('')
-  : '<tr><td>—</td><td>X 追踪账户</td><td>无新增</td><td>在本次成功获取的数据中，未发现覆盖日期内的新原创帖。</td><td>—</td></tr>';
+  : limitation
+    ? '<tr><td>—</td><td>X 追踪账户</td><td>未确认</td><td>API 调用未完成，无法判断是否有新增。</td><td>—</td></tr>'
+    : '<tr><td>—</td><td>X 追踪账户</td><td>无新增</td><td>在本次成功获取的数据中，未发现覆盖日期内的新原创帖。</td><td>—</td></tr>';
 
 const coverage = `覆盖日期：${date}（上海时间）。本页由 X API 自动抓取公开原创帖；转帖和回复默认排除。`;
 const report = `# 市场信源每日追踪：${date}\n\n> ${coverage} 仅供信息参考，不构成投资建议。\n\n## 覆盖说明\n\n${limitation || '已使用 X API 检查固定追踪账户。原文摘录仅用于识别内容，完整语境请以原帖为准。'}\n\n| 时间 | 来源 / 作者 | 类型 | 摘要 | 原文 |\n|---|---|---|---|---|\n${reportRows}\n\n## 待核验\n\n- X API 仅能获取可由当前套餐与权限返回的公开数据；受保护、删除、被限制或超出套餐范围的帖子可能无法取得。\n- 自动抓取不判断观点真伪；涉及公司披露、交易或监管信息时，应以一手文件或媒体原文复核。\n`;
